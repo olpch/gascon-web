@@ -2,12 +2,12 @@ export interface Project {
   id: string;
   title: string;
   image: string;
+  coverImage?: string;
   location?: string;
   category?: string;
   slug?: string;
   client?: string;
   year?: string;
-  coverImage?: string;
   gallery?: string[];
   shortDescription?: string;
   description?: string;

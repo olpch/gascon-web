@@ -29,9 +29,8 @@ export default function Footer() {
 
             <div className="flex flex-col gap-4">
               <Link href="/">Home</Link>
-              <Link href="/studio">Studio</Link>
               <Link href="/projects">Projects</Link>
-              <Link href="/services">Services</Link>
+              <Link href="/staff">Staff</Link>
               <Link href="/contact">Contact</Link>
             </div>
           </div>

@@ -3,15 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { Project } from "@/app/lib/models";
 
 interface ProjectCardProps {
-  project: {
-    slug: string;
-    title: string;
-    category: string;
-    year: string;
-    image: string;
-  };
+  project: Project;
 }
 
 export default function ProjectItem({ project }: ProjectCardProps) {
@@ -34,7 +29,7 @@ export default function ProjectItem({ project }: ProjectCardProps) {
               transition={{ duration: .7 }}
             >
               <Image
-                src={project.cover}
+                src={project.coverImage || ''}
                 alt={project.title}
                 width={2200}
                 height={1500}

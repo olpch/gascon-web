@@ -23,14 +23,10 @@ export default function RootLayout({
   const isContactPage = pathname === "/contact";
   
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={proximaNova.variable}>
-        <LenisProvider>
-          <Navbar nbg={isContactPage} />
-            {children}
-          <Footer></Footer>
-        </LenisProvider>
-      </body>
-    </html>
+    <LenisProvider>
+      <Navbar nbg={isContactPage} />
+        {children}
+      <Footer></Footer>
+    </LenisProvider>
   );
 }
