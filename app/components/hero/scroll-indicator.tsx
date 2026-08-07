@@ -16,13 +16,11 @@ export default function ScrollIndicator() {
     >
       <div className="flex flex-col items-center gap-4">
 
-        <span className="text-xs uppercase tracking-[.4em] text-white/70">
-
+        <span className="text-xs font-extrabold uppercase tracking-[.4em] text-white">
           Scroll
-
         </span>
 
-        <div className="h-20 w-px bg-white/40" />
+        <div className="h-20 w-[2px] bg-white" />
 
       </div>
     </motion.div>

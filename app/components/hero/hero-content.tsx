@@ -18,10 +18,6 @@ export default function HeroContent() {
       }}
       className="relative z-20 max-w-6xl"
     >
-      <span className="mb-10 block text-sm uppercase tracking-[0.5em] text-white/70">
-        Gascon Architecture
-      </span>
-
       <h1 className="text-[clamp(4.8rem,10vw,9rem)] font-light leading-[0.92] tracking-[-0.05em] text-white">
         Designing
         <br />

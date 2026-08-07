@@ -6,18 +6,33 @@ import ProjectCard from "../project/project-card";
 const projects = [
   {
     title: "Private Residence",
+    location: "Panamá",
+    image: "/imgs/project1.jpg",
+  },
+  {
+    title: "Urban House",
+    location: "Madrid",
+    image: "/imgs/project1.jpg",
+  },
+  {
+    title: "Coastal Villa",
+    location: "Canarias",
+    image: "/imgs/project1.jpg",
+  },
+  {
+    title: "Private Residence",
     location: "Barranquilla",
-    image: "/images/home/project1.jpg",
+    image: "/imgs/project1.jpg",
   },
   {
     title: "Urban House",
     location: "Bogotá",
-    image: "/images/home/project2.jpg",
+    image: "/imgs/project1.jpg",
   },
   {
     title: "Coastal Villa",
     location: "Santa Marta",
-    image: "/images/home/project3.jpg",
+    image: "/imgs/project1.jpg",
   },
 ];
 
@@ -29,7 +44,7 @@ export default function FeaturedProjects() {
 
         <Heading className="mb-24">
 
-          Selected Projects
+          Projects
 
         </Heading>
 
@@ -37,9 +52,9 @@ export default function FeaturedProjects() {
 
       <div className="grid gap-12 lg:grid-cols-3">
 
-        {projects.map((project) => (
+        {projects.map((project, index) => (
 
-          <Reveal key={project.title}>
+          <Reveal key={index}>
 
             <ProjectCard {...project} />
 

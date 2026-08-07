@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Loader() {
@@ -31,16 +32,18 @@ export default function Loader() {
             }}
             className="flex flex-col items-center gap-10"
           >
-            <div className="h-24 w-24 rounded-full border border-[#3C3C3C]/20 flex items-center justify-center">
-
-              G
-
+            <div 
+              className="loading-logo h-24 w-24 
+              rounded-full border border-[#3C3C3C]/20 
+              flex items-center justify-center">
             </div>
-
             <p className="tracking-[.6em] uppercase text-sm">
-
-              Gascon Architecture
-
+              <Image 
+                className="loading-logo2"
+                src="/imgs/loading-logo.png"
+                width={550} height={165}
+                alt="Logo"
+              />
             </p>
           </motion.div>
         </motion.div>

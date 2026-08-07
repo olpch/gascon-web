@@ -5,11 +5,11 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 
 const links = [
-  ["Studio", "/studio"],
+  ["Home", "/"],
   ["Projects", "/projects"],
-  ["Research", "/research"],
-  ["Journal", "/journal"],
+  ["Staff", "/staff"],
   ["Contact", "/contact"],
+  ["English", "/contact"],
 ];
 
 interface Props {

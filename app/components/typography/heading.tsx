@@ -13,7 +13,7 @@ export default function Heading({
     <h2
       className={cn(
         "font-light tracking-[-0.04em] leading-[0.95]",
-        "text-[clamp(3rem,7vw,6rem)]",
+        "text-[clamp(3rem,7vw,5rem)]",
         className
       )}
     >

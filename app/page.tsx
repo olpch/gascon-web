@@ -8,15 +8,11 @@ import CTA from "./components/sections/cta";
 import Footer from "./components/layout/footer";
 export default function HomePage() {
   return (
-    <>
+    <div id="main-container">
       <Hero />
       <Philosophy />
       <FeaturedProjects />
-      <Studio />
-      <Services />
-      <Stats />
-      <CTA />
-      <footer />
-    </>
+      <Footer />
+    </div>
   );
 }

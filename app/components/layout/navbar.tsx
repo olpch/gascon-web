@@ -5,16 +5,25 @@ import { useEffect, useState } from "react";
 
 import FullscreenMenu from "./fullscreen-menu";
 import MenuButton from "./menu-button";
+import Image from 'next/image';
 
 const links = [
-  ["Studio", "/studio"],
-  ["Projects", "/projects"],
-  ["Research", "/research"],
-  ["Journal", "/journal"],
-  ["Contact", "/contact"],
+  { title: "Home", href: "/", icon: '' },
+  { title: "Projects", href: "/projects", icon: '' },
+  { title: "staff", href: "/staff", icon: '' },
+  { title: "Contact", href: "/contact", icon: '' },
+  { title: "English", href: "/contact", icon: "" },
 ];
 
-export default function Navbar() {
+interface Props {
+  nbg?: boolean;
+}
+
+const getBackground = (nbg:boolean = false) => {
+  return !nbg ? 'nav-bar' : 'nav-bar-nbg';
+}
+
+export default function Navbar({nbg = false}: Props) {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
 
@@ -45,25 +54,31 @@ export default function Navbar() {
           hidden ? "-translate-y-full" : "translate-y-0"
         }`}
       >
-        <nav className="mx-auto flex h-24 max-w-[1700px] items-center justify-between px-8 xl:px-16">
+        <nav className={`${getBackground(nbg)} mx-auto flex h-18 p-2 items-center justify-between px-8 xl:px-8`}>
 
           <Link
             href="/"
             className="text-sm font-medium uppercase tracking-[0.45em]"
           >
-            GASCON
+            <Image 
+              className="image-logo"
+              src="/imgs/Logo_dark.png"
+              width={550} height={98}
+              alt="Logo"
+            />
           </Link>
 
           {/* Desktop */}
 
           <ul className="hidden items-center gap-14 lg:flex">
 
-            {links.map(([title, href]) => (
+            {links.map(({title, href, icon}) => (
               <li key={title}>
                 <Link
                   href={href}
-                  className="text-[13px] uppercase tracking-[0.28em] text-black/70 transition hover:text-black"
+                  className="nav-link text-[13px] uppercase tracking-[0.28em] text-black/70 transition hover:text-black"
                 >
+                  <span className="font-nerd">{ `${icon} ` || ''} </span>
                   {title}
                 </Link>
               </li>
