@@ -1,8 +1,9 @@
 export interface Project {
   id: string;
   title: string;
-  location: string;
-  category: string;
+  image: string;
+  location?: string;
+  category?: string;
   slug?: string;
   client?: string;
   year?: string;
@@ -15,7 +16,7 @@ export interface Project {
   order?: number;
   createdAt?: string;
   updatedAt?: string;
-  image?: string;
+  isNew?: boolean;
 }
 
 export interface StaffMember {

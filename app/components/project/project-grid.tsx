@@ -5,25 +5,19 @@ import Link from 'next/link';
 import { useState } from 'react';
 import Reveal from '../effects/reveal';
 import Heading from '../typography/heading';
+import { Project } from '@/app/lib/models';
 
-interface Project {
-  id: string;
-  title: string;
-  image: string;
-  isNew?: boolean;
-  locationAndYear: string;
-}
 
 const PROJECTS_DATA: Project[] = [
-  { id: '1', title: 'Bamboo Pavilion', locationAndYear: 'Madrid 2026', image: '/imgs/project1.jpg', isNew: true },
-  { id: '2', title: 'Facade Structure', locationAndYear: 'Madrid 2026', image: '/imgs/project1.jpg' },
-  { id: '3', title: 'Terraced Roof', locationAndYear: 'Madrid 2026', image: '/imgs/project1.jpg' },
-  { id: '4', title: 'Acoustic Wall', locationAndYear: 'Madrid 2026', image: '/imgs/project1.jpg', isNew: true },
-  { id: '5', title: 'Exhibition Hall', locationAndYear: 'Madrid 2026', image: '/imgs/project1.jpg', isNew: true },
-  { id: '6', title: 'Timber Installation', locationAndYear: 'Madrid 2026', image: '/imgs/project1.jpg' },
-  { id: '7', title: 'Forest Lookout', locationAndYear: 'Madrid 2026', image: '/imgs/project1.jpg' },
-  { id: '8', title: 'Wooden Canopy', locationAndYear: 'Madrid 2026', image: '/imgs/project1.jpg', isNew: true },
-  { id: '9', title: 'Commercial Entrance', locationAndYear: 'Madrid 2026', image: '/imgs/project1.jpg' },
+  { id: '1', title: 'Bamboo Pavilion', year: 'Madrid 2026', image: '/imgs/project1.jpg', isNew: true },
+  { id: '2', title: 'Facade Structure', year: 'Madrid 2026', image: '/imgs/project1.jpg' },
+  { id: '3', title: 'Terraced Roof', year: 'Madrid 2026', image: '/imgs/project1.jpg' },
+  { id: '4', title: 'Acoustic Wall', year: 'Madrid 2026', image: '/imgs/project1.jpg', isNew: true },
+  { id: '5', title: 'Exhibition Hall', year: 'Madrid 2026', image: '/imgs/project1.jpg', isNew: true },
+  { id: '6', title: 'Timber Installation', year: 'Madrid 2026', image: '/imgs/project1.jpg' },
+  { id: '7', title: 'Forest Lookout', year: 'Madrid 2026', image: '/imgs/project1.jpg' },
+  { id: '8', title: 'Wooden Canopy', year: 'Madrid 2026', image: '/imgs/project1.jpg', isNew: true },
+  { id: '9', title: 'Commercial Entrance', year: 'Madrid 2026', image: '/imgs/project1.jpg' },
 ];
 export default function ProjectGrid() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -85,7 +79,7 @@ export default function ProjectGrid() {
             {/* Hover Overlay with Text (Exact Replica) */}
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 z-10 text-white">
               <span className="text-[10px] tracking-widest font-normal uppercase mb-1 opacity-90">
-                {project.locationAndYear}
+                {project.year}
               </span>
               <h3 className="text-xl font-normal leading-snug tracking-tight">
                 {project.title}
