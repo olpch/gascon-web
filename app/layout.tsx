@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
       <body className={fontsClass}>
         <>
-          {/* <Loader /> */}
+          <Loader />
           <LenisProvider>
             {children}
           </LenisProvider>

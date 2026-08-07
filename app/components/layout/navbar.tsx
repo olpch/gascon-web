@@ -12,7 +12,7 @@ const links = [
   { title: "Projects", href: "/projects", icon: '' },
   { title: "staff", href: "/staff", icon: '' },
   { title: "Contact", href: "/contact", icon: '' },
-  { title: "English", href: "/contact", icon: "" },
+  { title: "Spanish", href: "/", icon: "" },
 ];
 
 interface Props {
