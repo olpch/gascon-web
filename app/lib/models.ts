@@ -1,22 +1,33 @@
 export interface Project {
   id: string;
   title: string;
-  image: string;
-  coverImage?: string;
-  location?: string;
-  category?: string;
+  coverImage: string;
+  location: string;
+  country: string;
+  category: string;
   slug?: string;
   client?: string;
-  year?: string;
-  gallery?: string[];
+  year: number;
+  area: number;
+  gallery: string[];
   shortDescription?: string;
-  description?: string;
+  description?: {
+    en:string;
+    es:string;
+  }
   featured?: boolean;
   visible?: boolean;
+  home?: boolean;
+  finalized?: boolean;
   order?: number;
   createdAt?: string;
   updatedAt?: string;
   isNew?: boolean;
+}
+
+export interface StorageSize {
+  used: number;
+  percent: number;
 }
 
 export interface StaffMember {
@@ -32,4 +43,63 @@ export interface StaffMember {
   projects: Project[];
   new?: boolean;
 
+}
+
+export interface CurrentUser {
+  email: string;
+  password: string;
+  token: string;
+  avatar: string;
+  role: string;
+  name: string;
+  createAt: string;
+}
+
+export interface UserAuth {
+  email: string,
+  pwd: string;
+}
+
+export interface Dictionary {
+  id: string;
+  label: string;
+  "navigation": {
+    label: string;
+    home: string;
+    projects: string;
+    staff: string;
+    contact: string;
+  },
+  pages: {
+    home: {
+      banner: {
+        title: string;
+        subtitle: string;
+      },
+      philosophy: {
+        title: string;
+        subtitle: string;
+      }
+    },
+    projects: {
+      name: string;
+      tag: string;
+    },
+    contact: {
+      name: string;
+      title: string;
+      subtitle: string;
+    },
+    staff: {
+      name: string;
+      title: string;
+    }
+  },
+  general: {
+    copyright: string;
+    email: string;
+    phone: string;
+    location: string;
+    country: string;
+  }
 }

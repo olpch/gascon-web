@@ -5,6 +5,7 @@ import { Project } from "@/app/lib/models";
 import StaffInput from "./StaffInput";
 import StaffTextarea from "./StaffTextarea";
 import Tabs from "../tabs";
+import { getLanguageId } from "@/app/services/global-config";
 
 interface ProjectEditorProps {
   project: Project;
@@ -14,6 +15,7 @@ interface ProjectEditorProps {
 
 const initLanguage = {
   en: {
+    id: 'en',
     navigation: {
         home: 'Home',
         projects: 'Projects',
@@ -54,6 +56,7 @@ const initLanguage = {
     }
   },
   es: {
+    id: 'es',
     navigation: {
         home: 'Inicio',
         projects: 'Proyectos',
@@ -95,16 +98,12 @@ const initLanguage = {
   }
 }
 
-const getLocalLanguage = () => {
-  if (typeof window === "undefined") return "en";
-  return localStorage.getItem("language")?.toString() || 'en';
-}
 
 export default function LanguajeEditor() {
-  const localLanguage = initLanguage[getLocalLanguage() as keyof typeof initLanguage] || initLanguage.en;
+  const localLanguage = initLanguage[getLanguageId() as keyof typeof initLanguage] || initLanguage.en;
   const [form, setForm] = useState({});
   const [language, setlanguage] = useState(localLanguage);
-  const [languageTab, setLanguageTab] = useState(() => getLocalLanguage());
+  const [languageTab, setLanguageTab] = useState(() => getLanguageId());
 
   function changeLanguageTab(tab: string) {
     const newLanguage = initLanguage[tab as keyof typeof initLanguage] || initLanguage.en;

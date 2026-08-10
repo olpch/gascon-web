@@ -7,47 +7,8 @@ import ProjectEditor from "@/app/components/admin/ProjectEditor";
 import ProjectToolbar from "@/app/components/admin/ProjectToolbar";
 import { Project } from "@/app/lib/models";
 import { toast } from "sonner";
-import { getProjectsList } from "@/app/services/projects";
-import Alert from "@/app/components/alert/alert";
+import { createProject, getProjectsList, updateProject, deleteProject } from "@/app/services/projects";
 import AlertInline from "@/app/components/alert/alert-inline";
-
-const initialProjects: Project[] = [
-  {
-    id: "1",
-    title: "Casa Moderna",
-    category: "Residencial",
-    location: "Barranquilla",
-    year: "2025",
-    description: "Proyecto residencial contemporáneo.",
-    coverImage: "/imgs/project1.jpg",
-    image: "/imgs/project1.jpg",
-    visible: true,
-    order: 1,
-    gallery: [
-        "/imgs/project1.jpg",
-        "/imgs/project1.jpg",
-        "/imgs/project1.jpg",
-    ]
-  },
-  {
-    id: "2",
-    title: "Hotel Boutique",
-    category: "Comercial",
-    location: "Santa Marta",
-    year: "2024",
-    description: "Hotel de lujo frente al mar.",
-    coverImage: "/imgs/project1.jpg",
-    image: "/imgs/project1.jpg",
-    visible: true,
-    order: 2,
-    gallery: [
-        "/imgs/project1.jpg",
-        "/imgs/project1.jpg",
-        "/imgs/project1.jpg",
-    ]
-  },
-];
-
 
 
 export default function ProjectsAdminPage() {
@@ -76,40 +37,74 @@ export default function ProjectsAdminPage() {
     }
   }
 
-  const handleSave = (updated: Project) => {
+  const handleSave = async (created: Project) => {
+    const id = toast.loading("Actualizando...");
+    setProjects((prev) =>
+      prev.map((p) => (p.id === created.id ? created : p))
+    );
+    try {
+      await createProject(created);
+      toast.success("Registro guardado correctamente.", {id});
+      setSelected({...created, isNew: false});
+    } catch (error) {
+      console.error(error);
+      toast.error("No fue posible guardar el registro.", {id});
+    }
+  };
+
+  const handleUpdate = async (updated: Project) => {
+    const id = toast.loading("Actualizando...");
     setProjects((prev) =>
       prev.map((p) => (p.id === updated.id ? updated : p))
     );
-    console.table(updated);
-    setSelected(updated);
+    try {
+      await updateProject(updated);
+      toast.success("Registro guardado correctamente.", {id});
+      setSelected(updated);
+    } catch (error) {
+      console.error(error);
+      toast.error("No fue posible guardar el registro.", {id});
+    }
   };
   
-  const handleDelete = (id: string) => {
-    const remaining = projects.filter((p) => p.id !== id);
+  const handleDelete = async (projectId: string) => {
+    const id = toast.loading("Actualizando...");
+    const remaining = projects.filter((p) => p.id !== projectId);
     setProjects(remaining);
-    setSelected(remaining[0] ?? null);
+    try {
+      await deleteProject(projectId);
+      toast.success("Registro guardado correctamente.", {id});
+      setSelected(remaining[0] ?? null);
+    } catch (error) {
+      console.error(error);
+      toast.error("No fue posible guardar el registro.", {id});
+    }
   };
 
-    const handleNewProject = () => {
-        const newProject: Project = {
-            id: crypto.randomUUID(),
-            title: "Nuevo proyecto",
-            category: "",
-            location: "",
-            year: "",
-            description: "",
-            image: "",
-            visible: true,
-            order: projects.length + 1,
-        };
-
-        setProjects((prev) => [...prev, newProject]);
-        setSelected(newProject);
+  const handleNewProject = () => {
+    const newProject: Project = {
+      id: crypto.randomUUID(),
+      title: "Nuevo proyecto",
+      category: "",
+      country: "",
+      location: "",
+      year: (new Date()).getFullYear(),
+      area: 0,
+      description:{ en:"", es:"" }, 
+      visible: true,
+      finalized: false,
+      order: projects.length + 1,
+      coverImage: "/imgs/project_cover.png",
+      gallery: [],
+      isNew: true,
     };
+
+    setProjects((prev) => [...prev, newProject]);
+    setSelected(newProject);
+  };
 
     const filteredProjects = projects.filter((project) => {
       const text = search.toLowerCase();
-      console.log({project, text});
       return (
         project?.title?.toLowerCase().includes(text) ||
         project?.category?.toLowerCase().includes(text) ||
@@ -146,6 +141,7 @@ export default function ProjectsAdminPage() {
               <ProjectEditor
                 project={selected}
                 onSave={handleSave}
+                onUpdate={handleUpdate}
                 onDelete={handleDelete}
               />
             )

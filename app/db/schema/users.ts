@@ -1,6 +1,6 @@
 
 import { sql } from "drizzle-orm";
-import { sqliteTable, integer, text } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { randomUUID } from "node:crypto";
 
 export const users = sqliteTable("users", {
@@ -8,7 +8,9 @@ export const users = sqliteTable("users", {
     .primaryKey()
     .$defaultFn(() => randomUUID()),
   pwd: text("pwd").notNull(),
-  email: text("name").notNull(),
-  name: text("email").notNull(),
+  email: text("email").notNull(),
+  name: text("name").notNull(),
+  avatar: text("avatar").notNull().default('/img/avatar-m.jpg'),
+  role: text("role").notNull().default('user'),
   createAt: text().notNull().default(sql`(CURRENT_TIMESTAMP)`),
 });

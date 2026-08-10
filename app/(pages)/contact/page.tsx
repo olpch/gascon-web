@@ -2,8 +2,12 @@
 
 import { motion } from "motion/react";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { useLanguage } from "@/app/providers/language-context";
 
 export default function Contact() {
+  
+  const { t } = useLanguage();
+  
   return (
     <section id="contact" className="py-40">
       <div className="mx-auto max-w-[1600px] px-8 md:px-12 lg:px-20">
@@ -18,16 +22,15 @@ export default function Contact() {
 
           <div className="space-y-8">
             <span className="text-xs uppercase tracking-[0.35em] text-black/45">
-              Contact
+              { t('navigation.contact')}
             </span>
 
             <h2 className="max-w-md text-5xl font-normal leading-[1.1] tracking-[-0.04em] text-black md:text-6xl">
-              Let's discuss your next project.
+              { t('pages.contact.title')}
             </h2>
 
             <p className="max-w-sm text-base leading-8 text-black/55">
-              We collaborate with clients seeking architecture that is
-              timeless, functional and deeply connected to its context.
+              { t('pages.contact.subtitle')}
             </p>
           </div>
 
@@ -47,9 +50,9 @@ export default function Contact() {
                   </p>
 
                   <p className="leading-8 text-black/75">
-                    Barranquilla
+                    { t('general.location')}
                     <br />
-                    Colombia
+                    { t('general.country')}
                   </p>
                 </div>
               </div>
@@ -71,7 +74,7 @@ export default function Contact() {
                     href="mailto:hello@gasconarchitecture.com"
                     className="transition-colors duration-300 hover:text-black/50"
                   >
-                    hello@gasconarchitecture.com
+                    { t('general.email')}
                   </a>
                 </div>
               </div>
@@ -93,7 +96,7 @@ export default function Contact() {
                     href="tel:+573001234567"
                     className="transition-colors duration-300 hover:text-black/50"
                   >
-                    +57 300 123 4567
+                    { t('general.phone')}
                   </a>
                 </div>
               </div>

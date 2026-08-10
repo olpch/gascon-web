@@ -22,6 +22,76 @@
       "when": 1786015892189,
       "tag": "0002_daily_moonstone",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1786207382739,
+      "tag": "0003_purple_juggernaut",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1786221136141,
+      "tag": "0004_unique_spitfire",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1786221450763,
+      "tag": "0005_panoramic_anita_blake",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1786226630993,
+      "tag": "0006_dark_agent_brand",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1786226681494,
+      "tag": "0007_nappy_gorgon",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1786293543796,
+      "tag": "0008_giant_imperial_guard",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1786298177290,
+      "tag": "0009_loud_psylocke",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1786298316455,
+      "tag": "0010_burly_devos",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "6",
+      "when": 1786310038575,
+      "tag": "0011_fast_christian_walker",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1786313850242,
+      "tag": "0012_zippy_stingray",
+      "breakpoints": true
     }
   ]
 }

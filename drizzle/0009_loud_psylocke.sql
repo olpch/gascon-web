@@ -1,0 +1,1 @@
+ALTER TABLE `projects` ALTER COLUMN "description" TO "description" text NOT NULL DEFAULT '{"en":"","es":""}';

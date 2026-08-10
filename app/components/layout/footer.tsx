@@ -1,8 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Container from "./container";
 import Image from 'next/image';
+import { useLanguage } from "@/app/providers/language-context";
 
 export default function Footer() {
+    
+  const { t } = useLanguage();
+
   return (
     <footer className="border-t bg-[#383838] border-black/10 py-16">
       <Container className="!text-white">
@@ -24,27 +30,27 @@ export default function Footer() {
 
           <div>
             <p className="mb-6 uppercase tracking-[.3em] text-sm">
-              Navigation
+              { t('navigation.label')}
             </p>
 
             <div className="flex flex-col gap-4">
-              <Link href="/">Home</Link>
-              <Link href="/projects">Projects</Link>
-              <Link href="/staff">Staff</Link>
-              <Link href="/contact">Contact</Link>
+              <Link href="/">{ t('navigation.home')}</Link>
+              <Link href="/projects">{ t('navigation.projects')}</Link>
+              <Link href="/staff">{ t('navigation.staff')}</Link>
+              <Link href="/contact">{ t('navigation.contact')}</Link>
             </div>
           </div>
 
           <div>
             <p className="mb-6 uppercase tracking-[.3em] text-sm">
-              Contact
+              { t('navigation.contact')}
             </p>
-            <p>hello@gascon.com</p>
-            <p className="mt-3">+57 300 0000000</p>
+            <p>{ t('general.email')}</p>
+            <p className="mt-3">{ t('general.phone')}</p>
           </div>
         </div>
         <div className="mt-24 flex justify-between border-t border-black/10 pt-8 text-sm">
-          <span>© 2026 Gascon Architecture</span>
+          <span>{ t('general.copyright')}</span>
         </div>
       </Container>
     </footer>

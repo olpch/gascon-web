@@ -1,0 +1,1 @@
+ALTER TABLE `projects` ADD `home` integer DEFAULT 0 NOT NULL;

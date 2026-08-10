@@ -2,16 +2,17 @@
 
 import { useState } from "react";
 import { imageUpload } from "@/app/services/image-upload";
-import { Camera } from "lucide-react";
 
 interface Props {
-  onUploaded(url: string): void;
+  category: string;
   indentifier: string;
+  onUploaded(url: string): void;
 }
 
 export default function ImageUpload({
   onUploaded,
-  indentifier
+  indentifier,
+  category,
 }: Props) {
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +26,7 @@ export default function ImageUpload({
     try {
       setLoading(true);
 
-      const data = await imageUpload(file);
+      const data = await imageUpload(file, category);
 
       onUploaded(data.url);
     } finally {
@@ -34,15 +35,12 @@ export default function ImageUpload({
   }
 
   return (
-    <div className="text-sm space-y-2">
-        Change Photo
-        <input
-            id={indentifier}
-            type="file"
-            accept="image/*"
-            onChange={handleChange}
-        />
-        {loading && (<p>Subiendo...</p>)}
-    </div>
+    <input
+      id={indentifier}
+      type="file"
+      accept="image/*"
+      className="hidden"
+      onChange={handleChange}
+    />
   );
 }

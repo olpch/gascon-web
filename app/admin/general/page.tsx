@@ -4,6 +4,7 @@ import { useState } from "react";
 import LanguajeEditor from "@/app/components/admin/LanguajeEditor";
 import SidebarOption from "@/app/components/admin/SidebarOption";
 import ChangePassword from "@/app/components/admin/ChangePassword";
+import PagesEditor from '@/app/components/admin/PagesEditor';
 
 interface Option {
     id: string;
@@ -13,6 +14,12 @@ interface Option {
 }
 
 const options: Option[] = [
+    { 
+        id: "edit-pages",
+        title: "Páginas",
+        image: "/imgs/edit-pages.png",
+        subtitle: "Edición de las páginas"
+    },
     { 
         id: "language",
         title: "Idioma",
@@ -43,7 +50,7 @@ export default function GeneralPage() {
                             <SidebarOption
                                 key={option.id}
                                 option={option}
-                                selected={index === 0}
+                                selected={ optionSelected.id === option.id }
                                 onClick={() => handleSelect(option)} />
                         ))
                     }
@@ -53,8 +60,10 @@ export default function GeneralPage() {
 
             <main className="flex-1 overflow-auto p-10">
                 <div className="mx-auto max-w-4xl">                    
-                    { optionSelected.id === "language" && <LanguajeEditor /> }
-                    { optionSelected.id === "password" && <ChangePassword /> }
+                    { optionSelected.id === "edit-pages" && <PagesEditor /> }
+                    { optionSelected.id === "language"  && <LanguajeEditor /> }
+                    { optionSelected.id === "password"  && <ChangePassword /> }
+                    
                 </div>
             </main>
         </div>

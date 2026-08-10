@@ -35,9 +35,9 @@ export default function ProjectItem({
     >
       <div className="flex gap-4">
         <div className="relative h-20 w-28 overflow-hidden rounded-lg bg-slate-800">
-          {project.image ? (
+          {project.coverImage ? (
             <Image
-              src={project.image}
+              src={project.coverImage}
               alt={project.title}
               fill
               className="object-cover"
@@ -48,7 +48,6 @@ export default function ProjectItem({
             </div>
           )}
         </div>
-
         <div className="flex flex-1 flex-col justify-between">
           <div>
             <h3 className="line-clamp-1 text-base font-medium text-white">
@@ -64,24 +63,41 @@ export default function ProjectItem({
             </p>
           </div>
 
-          <div className="mt-3 flex items-center justify-between">
-            <span
-              className={`
-                rounded-full
-                px-2
-                py-1
-                text-xs
-                font-medium
-                ${
-                  project.visible
-                    ? "bg-emerald-500/15 text-emerald-400"
-                    : "bg-red-500/15 text-red-400"
-                }
-              `}
-            >
-              {project.visible ? "Visible" : "Oculto"}
-            </span>
-
+          <div className="mt-3 flex items-start justify-between">
+            <div>
+              <span
+                className={`
+                  rounded-full
+                  px-2
+                  py-1
+                  text-xs
+                  font-medium
+                  border
+                  mr-2
+                  ${
+                    project.visible
+                      ? "border-emerald-400 text-emerald-400"
+                      : "border-red-400 text-red-400"
+                  }
+                `}
+              >
+                { project.visible ? 'Visible' : 'Oculto' }
+              </span>
+              <span
+                className={`
+                  rounded-full
+                  px-2
+                  py-1
+                  text-xs
+                  font-medium
+                  ${ project.visible && project.home 
+                    ? "border border-indigo-500 text-indigo-500"
+                    : "hidden"
+                  }
+                `}>
+                Página inicio
+              </span>
+            </div>
             {project.visible ? (
               <Eye size={16} className="text-slate-400" />
             ) : (

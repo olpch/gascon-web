@@ -40,28 +40,20 @@ export default function ProjectItem({ project }: ProjectCardProps) {
           </div>
 
           <div className="flex justify-between">
-
             <div>
-
               <h2 className="text-5xl font-light">
                 {project.title}
               </h2>
-
               <p className="mt-3 text-neutral-500">
                 {project.category}
               </p>
-
             </div>
-
             <div className="text-right text-neutral-500">
               <p>{project.location}</p>
               <p>{project.year}</p>
             </div>
-
           </div>
-
         </div>
-
       </Link>
     </motion.article>
   );

@@ -39,7 +39,10 @@ export default function StaffPhotoUpload({
                 hover:border-indigo-500
                 "
             >
-            <ImageUpload onUploaded={onChange} indentifier={indentifier} />
+            <ImageUpload
+                category="staff"
+                onUploaded={onChange}
+                indentifier={indentifier} />
             <img
                 src={image}
                 alt="image staff"

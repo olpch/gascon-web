@@ -6,13 +6,13 @@ import { useEffect, useState } from "react";
 import FullscreenMenu from "./fullscreen-menu";
 import MenuButton from "./menu-button";
 import Image from 'next/image';
+import { useLanguage } from "@/app/providers/language-context";
 
 const links = [
-  { title: "Home", href: "/", icon: '' },
-  { title: "Projects", href: "/projects", icon: '' },
+  { title: "home", href: "/", icon: '' },
+  { title: "projects", href: "/projects", icon: '' },
   { title: "staff", href: "/staff", icon: '' },
-  { title: "Contact", href: "/contact", icon: '' },
-  { title: "Spanish", href: "/", icon: "" },
+  { title: "contact", href: "/contact", icon: '' },
 ];
 
 interface Props {
@@ -26,6 +26,12 @@ const getBackground = (nbg:boolean = false) => {
 export default function Navbar({nbg = false}: Props) {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const { language, t, setLanguage } = useLanguage();
+
+  const changeLanguage = () => {
+    const id = (language === 'en') ? 'es' : 'en';
+    setLanguage(id);
+  }
 
   useEffect(() => {
     let lastScroll = window.scrollY;
@@ -79,10 +85,20 @@ export default function Navbar({nbg = false}: Props) {
                   className="nav-link text-[13px] uppercase tracking-[0.28em] text-black/70 transition hover:text-black"
                 >
                   <span className="font-nerd">{ `${icon} ` || ''} </span>
-                  {title}
+                    { t(`navigation.${title}`) }
                 </Link>
               </li>
             ))}
+            <li key="Language">
+                <Link
+                  href=""
+                  onClick={changeLanguage}
+                  className="nav-link text-[13px] uppercase tracking-[0.28em] text-black/70 transition hover:text-black"
+                >
+                  <span className="font-nerd"> </span>
+                  {t('label')}
+                </Link>
+              </li>
 
           </ul>
 

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import { StaffMember } from "./staff";
+import { StaffMember } from "@/app/lib/models";
 
 
 export default function StaffCard({
@@ -19,7 +19,7 @@ export default function StaffCard({
       className="mx-auto max-w-5xl"
     >
       <Image
-        src={member.image}
+        src={member.image || '/imgs/avatar-m.jpg'}
         alt={member.name}
         width={550}
         height={550}
@@ -35,9 +35,9 @@ export default function StaffCard({
           {member.role}
         </p>
 
-        <p className="mt-10 text-lg leading-8 text-black/65">
+        {/* <p className="mt-10 text-lg leading-8 text-black/65">
           {member.description}
-        </p>
+        </p> */}
 
         <div className="mt-12 flex gap-8">
           {member.email && (

@@ -6,9 +6,9 @@ import bcrypt from "bcryptjs";
 export async function GET(request: Request) { 
   
   const projectsList = await db.select().from(users);
-  return NextResponse.json( {
-    success: true,
-    data:projectsList
-  });
+  const hash = await bcrypt.hash("12348765", 12)
+  return NextResponse.json(
+    { hash, success: true, data:projectsList}
+  );
 }
 

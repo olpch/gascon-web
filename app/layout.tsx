@@ -5,6 +5,7 @@ import LenisProvider from "./providers/lenis-provider";
 import Loader from "./components/effects/loader";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { LanguageProvider } from "./providers/language-context";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -27,7 +28,9 @@ export default function RootLayout({
         <>
           <Loader />
           <LenisProvider>
-            {children}
+            <LanguageProvider>
+              {children}
+            </LanguageProvider>
           </LenisProvider>
         </>
       </body>
