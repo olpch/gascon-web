@@ -2,6 +2,10 @@ import { JWTPayload, SignJWT, jwtVerify } from "jose";
 
 const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
+
+// TODO: Se qu es inseguro pero toca para validar!!
+console.log(process.env.JWT_SECRET);
+
 export async function createToken(payload: JWTPayload) {
     return await new SignJWT(payload)
         .setProtectedHeader({ alg: "HS256" })
