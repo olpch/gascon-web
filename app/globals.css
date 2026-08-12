@@ -119,6 +119,34 @@ section {
     color:white;
 }
 
+/* Scrollbar - Gascon Admin */
+.admin-scrollbar {
+  scrollbar-width: .8rem;
+  margin-right: 0.1rem;
+  scrollbar-color: #303a55 transparent;
+}
+
+.admin-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.admin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-scrollbar::-webkit-scrollbar-thumb {
+  background: #303a55;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.admin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #4b5a82;
+  background-clip: padding-box;
+}
+
 #hero {
     background-position: center;
     background-image: url(/imgs/background.png);
@@ -172,6 +200,16 @@ section {
     width: 15rem;
     height: 5rem;
     margin: 5rem 0;
+}
+
+.app-version {
+    left: 0;
+    width: 100%;
+    top: -1.3rem;
+    opacity: 0.25;
+    font-size: 0.7rem;
+    position: absolute;
+    text-align: center;
 }
 
 @theme inline {

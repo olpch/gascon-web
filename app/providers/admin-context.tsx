@@ -16,6 +16,8 @@ type ContextType = {
     currentUser: CurrentUser | null;
     isLoading: boolean;
     logout: () => void;
+    isAdminLoading: boolean;
+    setIsAdminLoading: (sw: boolean) => void;
 };
 
 const AdminContext = createContext<ContextType | null>(null);
@@ -28,7 +30,8 @@ export function AdminProvider({
 }) {
     const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-    
+    const [isAdminLoading, setIsAdminLoading] = useState(false);
+
     const logout = useCallback(() => {
         removeLocalUser();
         setCurrentUser(null);
@@ -45,8 +48,10 @@ export function AdminProvider({
             currentUser,
             isLoading,
             logout,
+            isAdminLoading,
+            setIsAdminLoading,
         }),
-        [currentUser, logout, isLoading]
+        [currentUser, logout, isAdminLoading]
     );
 
     return (

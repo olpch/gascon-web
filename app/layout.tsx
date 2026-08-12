@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { proximaNova, nerdFont, nerdFontMono } from "./lib/fonts";
 import "./globals.css";
-import LenisProvider from "./providers/lenis-provider";
 import Loader from "./components/effects/loader";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { LanguageProvider } from "./providers/language-context";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
   title: "Gascon Architecture",
@@ -27,11 +26,9 @@ export default function RootLayout({
       <body className={fontsClass}>
         <>
           <Loader />
-          <LenisProvider>
-            <LanguageProvider>
-              {children}
-            </LanguageProvider>
-          </LenisProvider>
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
         </>
       </body>
     </html>

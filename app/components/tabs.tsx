@@ -1,14 +1,16 @@
 "use client";
 
+import { Languages } from "../lib/models";
+
 interface Tab {
-  id: string;
+  id: 'en' | 'es';
   label: string;
 }
 
 interface TabsProps {
   tabs: Tab[];
   active: string;
-  onChange: (tab: string) => void;
+  onChange: (tab: keyof Languages) => void;
 }
 
 export default function Tabs({
@@ -31,10 +33,9 @@ export default function Tabs({
               text-sm
               font-medium
               transition-colors
-              ${
-                active === tab.id
-                  ? "text-indigo-400"
-                  : "text-slate-400 hover:text-white"
+              ${active === tab.id
+                ? "text-indigo-400"
+                : "text-slate-400 hover:text-white"
               }
             `}
           >

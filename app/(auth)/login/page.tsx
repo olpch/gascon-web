@@ -14,33 +14,36 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error401, setError401] = useState<boolean>(false);
   const router = useRouter();
-  
+
   const [form, setForm] = useState<UserAuth>({
     email: 'hello@gasconarchitecture.com',
     pwd: '12348765'
   });
 
   const updateField = <K extends keyof UserAuth>(
-      field: K,
-      value: UserAuth[K]
-    ) => {
-      setForm((prev) => ({
-        ...prev,
-        [field]: value,
-      }));
-    };
-  
+    field: K,
+    value: UserAuth[K]
+  ) => {
+    setForm((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
   const handleSubmit = (userForm: UserAuth) => {
     setError401(false);
+    setLoading(true);
     login(userForm)
       .then((remoteUser: CurrentUser) => {
+        setLoading(false);
         setLocalUser(remoteUser)
         router.replace('/admin/general');
       })
       .catch((error) => {
-        console.error({error})
-        setError401(true)}
-      );
+        // console.error({error})
+        setLoading(false);
+        setError401(true)
+      });
   }
 
   return (
@@ -64,7 +67,7 @@ export default function LoginPage() {
         className="relative z-10 w-full max-w-md"
       >
         <div className="mb-14 text-center">
-          <Image src="/imgs/logo_w.png" width={550} height={165} alt="gascon logo"/>
+          <Image src="/imgs/logo_w.png" width={550} height={165} alt="gascon logo" />
         </div>
 
         {/* Welcome */}
@@ -153,7 +156,7 @@ export default function LoginPage() {
 
           {
             error401 &&
-            <p className="text-sm text-red-400">
+            <p className="text-sm text-red-400 m-0">
               Credenciales inválidas
             </p>
           }

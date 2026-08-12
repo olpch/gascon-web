@@ -1,7 +1,5 @@
 
-import { sql } from "drizzle-orm";
-import { sqliteTable, integer, text } from "drizzle-orm/sqlite-core";
-import { randomUUID } from "node:crypto";
+import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 const currentYear = new Date().getFullYear().toString();
 

@@ -12,8 +12,8 @@ export interface Project {
   gallery: string[];
   shortDescription?: string;
   description?: {
-    en:string;
-    es:string;
+    en: string;
+    es: string;
   }
   featured?: boolean;
   visible?: boolean;
@@ -60,10 +60,22 @@ export interface UserAuth {
   pwd: string;
 }
 
+export interface LanguagesTab {
+  tab: keyof Languages;
+  prev: keyof Languages;
+}
+
+export type IsDirty = { state: boolean, form: Dictionary };
+
+export interface Languages {
+  en: Dictionary,
+  es: Dictionary
+}
+
 export interface Dictionary {
-  id: string;
+  id: keyof Languages;
   label: string;
-  "navigation": {
+  navigation: {
     label: string;
     home: string;
     projects: string;

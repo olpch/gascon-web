@@ -29,13 +29,13 @@ export function LanguageProvider({
 }: {
     children: ReactNode;
 }) {
-    const [language, setLanguage] = useState<Language>("es");
+    const [language, setLanguage] = useState<Language>("en");
     const [dictionaries, setDictionaries] = useState<Record<Language, Dictionary> | null>(null);
 
     useEffect(() => {
         getLocalDictionaries().then(setDictionaries);
     }, []);
-    
+
     useEffect(() => {
         const saved = localStorage.getItem("language");
         if (saved === "es" || saved === "en") {
@@ -59,7 +59,7 @@ export function LanguageProvider({
             setLanguage,
             t: (path: string) => {
                 const label = getLabel(dictionaries?.[language], path);
-                if(!! label && typeof label === 'string') {
+                if (!!label && typeof label === 'string') {
                     return label.replace(/\\n/g, "\n")
                 }
                 return path;

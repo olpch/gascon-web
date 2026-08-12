@@ -1,15 +1,16 @@
-import { CurrentUser } from "../lib/models";
+import { CurrentUser, Dictionary } from "../lib/models";
+import { getLanguage, setLanguage } from "./language";
 
 
 
 
 export function getConfigValue(key: string, defaultValue = null) {
     if (typeof window === "undefined") return defaultValue;
-    const data = localStorage.getItem(key);
+    const data = localStorage.getItem(key) || '';
     try {
-        return data ? JSON.parse(data) : defaultValue;
-    } catch(error) {
-        console.error(error, data);
+        return JSON.parse(data);
+    } catch (error) {
+        return defaultValue;
     }
 }
 
@@ -24,7 +25,8 @@ export function removeConfig(key: string) {
     localStorage.removeItem(key);
 }
 
-export function setLocalUser(cuser: CurrentUser) {
+export function
+    setLocalUser(cuser: CurrentUser) {
     return setConfigValue('cuser', cuser);
 }
 
@@ -37,26 +39,21 @@ export function removeLocalUser() {
 }
 
 export function getLanguageId() {
-    return  getConfigValue('language');
+    return getConfigValue('language');
 }
 
-export async function getLocalDictionaries() {
+export function getLocalDictionaries() {
     const localDictionaries = getConfigValue('dictionaries');
-    if(!!localDictionaries) return localDictionaries;
-    const remote = await getLanguage();
-    setConfigValue('dictionaries', remote.dictionaries)
-    return remote.dictionaries;
-
-}
-
-export async function getLanguage() {
-    const response = await fetch(`/api/languages`, {
-        method: "GET",
-        headers: {"Content-Type": "application/json"}
-    });
-    if (!response.ok) {
-        return [];
+    if (!!localDictionaries) {
+        return Promise.resolve(localDictionaries);
     }
-
-    return response.json();
+    return getLanguage().then((remote) => {
+        setConfigValue('dictionaries', remote.dictionaries);
+        return remote.dictionaries;
+    });
 }
+
+export function setRemoteDicionary(newDictionary: Dictionary): Promise<any> {
+    return setLanguage(newDictionary);
+}
+

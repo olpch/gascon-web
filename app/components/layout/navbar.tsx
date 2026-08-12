@@ -29,7 +29,7 @@ export default function Navbar({nbg = false}: Props) {
   const { language, t, setLanguage } = useLanguage();
 
   const changeLanguage = () => {
-    const id = (language === 'en') ? 'es' : 'en';
+    const id = (language === 'en') ? 'en' : 'es';
     setLanguage(id);
   }
 
