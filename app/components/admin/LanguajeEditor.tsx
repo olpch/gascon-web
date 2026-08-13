@@ -42,7 +42,7 @@ export default function LanguajeEditor({
   useEffect(() => onChange(form), [form]);
 
   return (
-    <div className="mt-10 mx-auto max-w-4xl">
+    <div className="my-15 px-8 mx-auto max-w-4xl">
       <h2 className="mb-10 text-2xl font-semibold text-white">
         Editar de idioma {form.label}
       </h2>

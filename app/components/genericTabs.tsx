@@ -1,23 +1,21 @@
 "use client";
 
-import { Languages } from "../lib/models";
-
 interface Tab {
-  id: keyof Languages;
+  id: string;
   label: string;
 }
 
-interface TabsProps {
+interface GenericTabsProps {
   tabs: Tab[];
   active: string;
-  onChange: (tab: keyof Languages) => void;
+  onChange: (tab: string) => void;
 }
 
-export default function Tabs({
+export default function GenericTabs({
   tabs,
   active,
   onChange,
-}: TabsProps) {
+}: GenericTabsProps) {
   return (
     <div className="border-b border-white/10">
       <nav className="flex gap-8">

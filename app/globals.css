@@ -89,8 +89,33 @@
 }
 
 html {
+    margin-right: 0.1rem;
     scroll-behavior:smooth;
+    scrollbar-width: .8rem;
+    scrollbar-color: #303a55 transparent;
 }
+
+html::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #303a55;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #4b5a82;
+  background-clip: padding-box;
+}
+
 
 body {
     /* color:var(--foreground); */
@@ -117,34 +142,6 @@ section {
 ::selection{
     background:#3D3D3D;
     color:white;
-}
-
-/* Scrollbar - Gascon Admin */
-.admin-scrollbar {
-  scrollbar-width: .8rem;
-  margin-right: 0.1rem;
-  scrollbar-color: #303a55 transparent;
-}
-
-.admin-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-.admin-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.admin-scrollbar::-webkit-scrollbar-thumb {
-  background: #303a55;
-  border-radius: 9999px;
-  border: 1px solid transparent;
-  background-clip: padding-box;
-}
-
-.admin-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #4b5a82;
-  background-clip: padding-box;
 }
 
 #hero {

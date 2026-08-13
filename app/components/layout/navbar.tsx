@@ -19,17 +19,17 @@ interface Props {
   nbg?: boolean;
 }
 
-const getBackground = (nbg:boolean = false) => {
+const getBackground = (nbg: boolean = false) => {
   return !nbg ? 'nav-bar' : 'nav-bar-nbg';
 }
 
-export default function Navbar({nbg = false}: Props) {
+export default function Navbar({ nbg = false }: Props) {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const { language, t, setLanguage } = useLanguage();
 
   const changeLanguage = () => {
-    const id = (language === 'en') ? 'en' : 'es';
+    const id = (language === 'en') ? 'es' : 'en';
     setLanguage(id);
   }
 
@@ -56,9 +56,8 @@ export default function Navbar({nbg = false}: Props) {
   return (
     <>
       <header
-        className={`fixed left-0 top-0 z-50 w-full transition-transform duration-500 ${
-          hidden ? "-translate-y-full" : "translate-y-0"
-        }`}
+        className={`fixed left-0 top-0 z-50 w-full transition-transform duration-500 ${hidden ? "-translate-y-full" : "translate-y-0"
+          }`}
       >
         <nav className={`${getBackground(nbg)} mx-auto flex h-18 p-2 items-center justify-between px-8 xl:px-8`}>
 
@@ -66,7 +65,7 @@ export default function Navbar({nbg = false}: Props) {
             href="/"
             className="text-sm font-medium uppercase tracking-[0.45em]"
           >
-            <Image 
+            <Image
               className="image-logo"
               src="/imgs/Logo_dark.png"
               width={550} height={98}
@@ -78,27 +77,27 @@ export default function Navbar({nbg = false}: Props) {
 
           <ul className="hidden items-center gap-14 lg:flex">
 
-            {links.map(({title, href, icon}) => (
+            {links.map(({ title, href, icon }) => (
               <li key={title}>
                 <Link
                   href={href}
                   className="nav-link text-[13px] uppercase tracking-[0.28em] text-black/70 transition hover:text-black"
                 >
-                  <span className="font-nerd">{ `${icon} ` || ''} </span>
-                    { t(`navigation.${title}`) }
+                  <span className="font-nerd">{`${icon} ` || ''} </span>
+                  {t(`navigation.${title}`)}
                 </Link>
               </li>
             ))}
             <li key="Language">
-                <Link
-                  href=""
-                  onClick={changeLanguage}
-                  className="nav-link text-[13px] uppercase tracking-[0.28em] text-black/70 transition hover:text-black"
-                >
-                  <span className="font-nerd"> </span>
-                  {t('label')}
-                </Link>
-              </li>
+              <Link
+                href=""
+                onClick={changeLanguage}
+                className="nav-link text-[13px] uppercase tracking-[0.28em] text-black/70 transition hover:text-black"
+              >
+                <span className="font-nerd"> </span>
+                {t('label')}
+              </Link>
+            </li>
 
           </ul>
 

@@ -15,10 +15,10 @@ export default function AdminGuard({
   const pathname = usePathname();
 
   useEffect(() => {
-    console.log({ currentUser })
-    if (isLoading) return;
+    if (isLoading) {
+      return;
+    }
 
-    // Login no necesita autenticación
     if (pathname === "/login") {
       return;
     }

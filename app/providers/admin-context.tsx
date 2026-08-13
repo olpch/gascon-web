@@ -41,6 +41,7 @@ export function AdminProvider({
         const user = getLocalUser();
         setCurrentUser(user);
         setIsLoading(false);
+        console.log('cargando el usuario', { currentUser, user, isLoading, newIsLoading: false });
     }, []);
 
     const value = useMemo(
@@ -51,7 +52,7 @@ export function AdminProvider({
             isAdminLoading,
             setIsAdminLoading,
         }),
-        [currentUser, logout, isAdminLoading]
+        [currentUser, logout, isLoading, isAdminLoading]
     );
 
     return (
