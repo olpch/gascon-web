@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useLanguage } from "@/app/providers/language-context";
 
 export default function Footer() {
-    
+
   const { t } = useLanguage();
 
   return (
@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid gap-16 md:grid-cols-3">
           <div>
             <h3 className="text-2xl">
-              <Image 
+              <Image
                 className="logo-footer"
                 src="/imgs/logo_w.png"
                 width={550} height={189}
@@ -30,27 +30,27 @@ export default function Footer() {
 
           <div>
             <p className="mb-6 uppercase tracking-[.3em] text-sm">
-              { t('navigation.label')}
+              {t('navigation.label')}
             </p>
 
             <div className="flex flex-col gap-4">
-              <Link href="/">{ t('navigation.home')}</Link>
-              <Link href="/projects">{ t('navigation.projects')}</Link>
-              <Link href="/staff">{ t('navigation.staff')}</Link>
-              <Link href="/contact">{ t('navigation.contact')}</Link>
+              <Link href="/">{t('navigation.home')}</Link>
+              <Link href="/projects">{t('navigation.projects')}</Link>
+              <Link href="/staff">{t('navigation.staff')}</Link>
+              <Link href="/contact">{t('navigation.contact')}</Link>
             </div>
           </div>
 
           <div>
             <p className="mb-6 uppercase tracking-[.3em] text-sm">
-              { t('navigation.contact')}
+              {t('navigation.contact')}
             </p>
-            <p>{ t('general.email')}</p>
-            <p className="mt-3">{ t('general.phone')}</p>
+            <p>{t('general.email')}</p>
+            <p className="mt-3">{t('general.phone')}</p>
           </div>
         </div>
         <div className="mt-24 flex justify-between border-t border-black/10 pt-8 text-sm">
-          <span>{ t('general.copyright')}</span>
+          <span>{t('general.copyright')}</span> (v0.1.10-Beta)
         </div>
       </Container>
     </footer>
