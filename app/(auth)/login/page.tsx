@@ -2,11 +2,11 @@
 
 import { motion } from "motion/react";
 import { Eye, EyeOff, LoaderCircle } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { login } from "@/app/services/auth";
 import { CurrentUser, UserAuth } from '../../lib/models';
-import { setLocalUser } from "@/app/services/global-config";
+import { getLocalUser, setLocalUser } from "@/app/services/global-config";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
@@ -45,6 +45,12 @@ export default function LoginPage() {
         setError401(true)
       });
   }
+
+  useEffect(() => {
+    if (Boolean(getLocalUser())) {
+      router.replace('/admin/general');
+    }
+  }, []);
 
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-slate-950 px-6">
