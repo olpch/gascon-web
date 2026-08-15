@@ -45,6 +45,7 @@ export default function Sidebar() {
     if (!currentUser) { router.replace('/admin'); }
   }, [currentUser]);
 
+  const generalPages = ['/admin/languages', '/admin/change-password'];
 
   return (
     <>
@@ -67,7 +68,8 @@ export default function Sidebar() {
 
               const active =
                 pathname === item.href ||
-                pathname.startsWith(item.href + "/");
+                pathname.startsWith(item.href + "/") ||
+                (item.name === "Website" && generalPages.includes(pathname));
 
               return (
                 <Link

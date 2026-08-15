@@ -10,12 +10,27 @@ import {
     useState,
     ReactNode,
 } from "react";
-import { Dictionary } from "../lib/models";
+import { Dictionary, Settings } from "../lib/models";
 import { getLocalDictionaries } from "../services/global-config";
+import { getSettings } from "../services/settings";
+
+const DefaultConfig: Settings = {
+    id: "",
+    data: {
+        home: {
+            banner: {
+                image: "/imgs/background.png",
+                video: "",
+                type: "image"
+            }
+        }
+    }
+}
 
 type Language = "es" | "en";
 type ContextType = {
     language: Language;
+    settings: Settings;
     dictionary: Dictionary | null;
     t: (path: string) => string;
     tlocal: (textEn: string, textEs: string) => string;
@@ -30,10 +45,12 @@ export function LanguageProvider({
     children: ReactNode;
 }) {
     const [language, setLanguage] = useState<Language>("en");
+    const [settings, setSettings] = useState<Settings>(DefaultConfig);
     const [dictionaries, setDictionaries] = useState<Record<Language, Dictionary> | null>(null);
 
     useEffect(() => {
         getLocalDictionaries().then(setDictionaries);
+        getSettings().then(setSettings);
     }, []);
 
     useEffect(() => {
@@ -57,6 +74,7 @@ export function LanguageProvider({
             language,
             dictionary: dictionaries?.[language] ?? null,
             setLanguage,
+            settings,
             t: (path: string) => {
                 const label = getLabel(dictionaries?.[language], path);
                 if (!!label && typeof label === 'string') {
@@ -68,7 +86,7 @@ export function LanguageProvider({
                 return (language === 'en') ? textEn : textEs;
             },
         }),
-        [language, dictionaries]
+        [language, settings, dictionaries]
     );
 
     return (

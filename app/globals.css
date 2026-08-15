@@ -147,9 +147,26 @@ section {
     color:white;
 }
 
+.video-warped {
+    position: relative
+}
+.video-warped::before {
+    content: 'Video no disponible';
+    color: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    width: 100%;
+    font-size: 2.8rem;
+    top: calc(50% - 1.4rem);
+    left: 0;
+    text-align: center;
+}
+
+pre {
+    color: white;
+}
+
 #hero {
     background-position: center;
-    background-image: url(/imgs/background.png);
     background-size: cover;
 }
 
@@ -210,6 +227,25 @@ section {
     font-size: 0.7rem;
     position: absolute;
     text-align: center;
+}
+
+.imagen-change {
+    cursor: pointer;
+    position: absolute;
+    left: 0; right: 0;
+    height: 100%; width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 1s ease;
+    opacity: 0;
+}
+.imagen-change:hover {
+    opacity: 1;
 }
 
 @theme inline {

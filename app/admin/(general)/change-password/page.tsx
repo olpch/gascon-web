@@ -222,7 +222,7 @@ function PasswordInput({
                         outline-none
                         transition
                         focus:border-indigo-500
-                        ${isDanger && '!border-red-900'}
+                        ${isDanger && 'border-red-900!'}
                     `}
         />
 

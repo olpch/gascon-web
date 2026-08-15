@@ -3,16 +3,16 @@
 import { useEffect, useState } from "react";
 import { Dictionary, Languages, LanguagesTab, IsDirty } from "@/app/lib/models";
 import { getLocalDictionaries, removeConfig, setRemoteDicionary } from '@/app/services/global-config';
-import LanguajeEditor from "./LanguajeEditor";
-import AdminModal, { ModalType } from "./AdminModal";
-import Tabs from "../tabs";
 import { hasChanges } from "@/app/lib/utils";
 import { toast } from "sonner";
 import { useAdminContext } from "@/app/providers/admin-context";
+import Tabs from "@/app/components/tabs";
+import LanguajeEditor from "@/app/components/admin/LanguajeEditor";
+import AdminModal, { ModalType } from "@/app/components/admin/AdminModal";
 
 const languagesTabDefault: LanguagesTab = { prev: 'en', tab: 'en' }
 
-export default function LanguajesEditor() {
+export default function LanguajesPage() {
   const [languagesTab, setLanguagesTab] = useState<LanguagesTab>(languagesTabDefault);
   const [languages, setLanguages] = useState<Languages>();
   const [dictionary, setDictionary] = useState<Dictionary>();

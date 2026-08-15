@@ -27,7 +27,7 @@ export async function GET(
         }
       );
     }
-    return NextResponse.json(proyectToObject(project));
+    return NextResponse.json(proyectToObject(project), { status: 201 });
   } catch (error) {
     console.error("GET_PROJECT_ERROR:", error);
 

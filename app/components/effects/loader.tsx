@@ -8,7 +8,7 @@ export default function Loader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
+    const timer = setTimeout(() => setLoading(false), 2800);
     return () => clearTimeout(timer);
   }, []);
 
@@ -32,13 +32,13 @@ export default function Loader() {
             }}
             className="flex flex-col items-center gap-10"
           >
-            <div 
+            <div
               className="loading-logo h-24 w-24 
               rounded-full border border-[#3C3C3C]/20 
               flex items-center justify-center">
             </div>
             <p className="tracking-[.6em] uppercase text-sm">
-              <Image 
+              <Image
                 className="loading-logo2"
                 src="/imgs/loading-logo.png"
                 width={550} height={165}

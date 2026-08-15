@@ -115,3 +115,20 @@ export interface Dictionary {
     country: string;
   }
 }
+
+export type BannerType = 'image' | 'video';
+
+export interface Config {
+  home: {
+    banner: {
+      image: string;
+      video: string;
+      type: BannerType;
+    }
+  }
+}
+
+export interface Settings {
+  id: string;
+  data: Config;
+}

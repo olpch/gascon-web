@@ -92,6 +92,20 @@
       "when": 1786313850242,
       "tag": "0012_zippy_stingray",
       "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "6",
+      "when": 1786738743268,
+      "tag": "0013_exotic_nitro",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "6",
+      "when": 1786739055111,
+      "tag": "0014_cultured_snowbird",
+      "breakpoints": true
     }
   ]
 }

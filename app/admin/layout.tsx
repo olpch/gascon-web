@@ -1,6 +1,5 @@
 "use client";
 
-import type { Metadata } from "next";
 import { proximaNova, nerdFont, nerdFontMono } from "../lib/fonts";
 import "../globals.css";
 import Sidebar from "../components/layout/admin/sidebar";
@@ -9,21 +8,11 @@ import { AdminProvider, useAdminContext } from "../providers/admin-context";
 import AdminGuard from "./admin-guard";
 import AdminLoading from '../components/admin/AdminLoading';
 
-// export async function generateMetadata(): Promise<Metadata> {
-//   return {
-//     title: "Gascon Architecture",
-//     description: "Architecture Studio"
-//   }
-// };
-
 const fontsClass = `${proximaNova.variable} ${nerdFont.variable} ${nerdFontMono.variable}`;
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-
+export default function RootLayout(
+  { children }: Readonly<{ children: React.ReactNode; }>
+) {
   return (
     <AdminProvider>
       <AdminGuard>

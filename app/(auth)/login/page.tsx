@@ -166,7 +166,6 @@ export default function LoginPage() {
               Credenciales inválidas
             </p>
           }
-          <pre>[{JSON.stringify(error401)}]</pre>
           <button
             disabled={loading}
             onClick={() => handleSubmit(form)}
