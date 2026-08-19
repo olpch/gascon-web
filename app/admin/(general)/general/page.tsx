@@ -46,15 +46,6 @@ export default function GeneralPage() {
     }));
   };
 
-  const changeImage = (urlvideo: string) => {
-
-  }
-
-  const changeVideo = (urlvideo: string) => {
-    updateField('video', urlvideo);
-    console.log({ settings, formBanner });
-  }
-
   const getUrlVideo = (videoIdDb?: string) => {
     const videoId = videoIdDb || getYouTubeVideoId(formBanner.video) || '';
     if (videoId === null || videoId.length < 1) {
@@ -64,18 +55,14 @@ export default function GeneralPage() {
       return `https://www.youtube.com/embed/${videoId}?autoplay=0&mute=1&loop=1&controls=1&showinfo=1&rel=0`
   }
 
-
-
-  const handleVideoSave = () => {
+  const handleSave = () => {
     setIsAdminLoading(true);
-    console.log('Guardando ....');
     if (!settings) return;
     setRemoteSettings(settings).then(() => {
       setIsAdminLoading(false);
       loadRemoteSettings();
       toast.success('Informacion actualizada');
     });
-
   }
 
   const urlVideoError = () => {
@@ -100,7 +87,7 @@ export default function GeneralPage() {
     const newBanner = {
       video: videoId,
       image: formBanner.image,
-      type: 'video' as BannerType
+      type: formBanner.type as BannerType
     };
     setSettings({
       id: settings.id,
@@ -119,11 +106,6 @@ export default function GeneralPage() {
         <h2 className="mb-3 text-2xl font-semibold text-white">
           Imagen Principal
         </h2>
-        <pre>
-          Type: [{formBanner.type}] < br />
-          Image: [{formBanner.image}] < br />
-          Video: [{formBanner.video}]
-        </pre>
         <hr className="mb-6 border border-white/10" />
         <GenericTabs
           active={formBanner.type}
@@ -157,6 +139,27 @@ export default function GeneralPage() {
                 indentifier="home-image-input"
                 onUploaded={(image) => updateField('image', image)} />
             </div>
+            <div className="mt-6 grid gap-6 grid-cols-3">
+              <div className="col-span-2">
+                <label className="mb-2 block text-sm font-medium text-slate-300">
+                  Dirección de video (Youtube)
+                </label>
+                <div
+                  className={`
+                    w-full rounded-lg border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none overflow-hidden transition focus:border-indigo-500
+                    ${urlVideoError() && 'border-red-800!'}
+                  `}
+                >{formBanner.image}</div>
+                {urlVideoError() && <p className="text-red-800" >Verifique la url del video</p>}
+              </div>
+              <div className="flex justify-end items-end">
+                <button
+                  onClick={handleSave}
+                  className="cursor-pointer rounded-lg w-[200] h-12 bg-indigo-600 px-6 py-3 font-medium text-white transition hover:bg-indigo-500">
+                  Actualizar cambios
+                </button>
+              </div>
+            </div>
           </>
         }
         {formBanner.type === 'video' &&
@@ -184,7 +187,7 @@ export default function GeneralPage() {
                 <input
                   type="text"
                   value={formBanner.video}
-                  onChange={(e) => changeVideo(e.target.value)}
+                  onChange={(e) => updateField('video', e.target.value)}
                   placeholder="Eje: https://www.youtube.com/watch?v=XXXXXXXX"
                   className={`
                     w-full rounded-lg border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none transition focus:border-indigo-500
@@ -195,7 +198,7 @@ export default function GeneralPage() {
               </div>
               <div className="flex justify-end items-end">
                 <button
-                  onClick={handleVideoSave}
+                  onClick={handleSave}
                   className="cursor-pointer rounded-lg w-[200] h-12 bg-indigo-600 px-6 py-3 font-medium text-white transition hover:bg-indigo-500">
                   Actualizar cambios
                 </button>

@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-24 flex justify-between border-t border-black/10 pt-8 text-sm">
-          <span>{t('general.copyright')}</span> <span className="text-white/30">(v0.1.8-Beta)</span>
+          <span>{t('general.copyright')}</span> <span className="text-white/30">(v0.1.12-Beta)</span>
         </div>
       </Container>
     </footer>

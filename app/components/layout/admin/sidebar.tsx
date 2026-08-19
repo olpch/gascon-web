@@ -94,7 +94,7 @@ export default function Sidebar() {
           </nav>
 
           <div className="mt-auto border-t border-white/10 p-5 relative">
-            <div className="app-version">Version: v0.1.8-Beta</div>
+            <div className="app-version">Version: v0.1.12-Beta</div>
             <button className="flex w-full items-center gap-3 rounded-lg p-2 transition hover:bg-slate-900">
               <img
                 src={currentUser?.avatar}
